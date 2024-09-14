@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "./firebase";
 import { toast } from "react-toastify";
 
 function Login() {
@@ -19,6 +19,19 @@ function Login() {
       navigate("/"); // Redirect to home or another page on successful login
     } catch (error) {
       toast.error("Failed to login. Please check your credentials.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    setLoading(true);
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      toast.success(`Logged in as ${result.user.displayName}`);
+      navigate("/"); // Redirect to home or another page on successful login
+    } catch (error) {
+      toast.error("Failed to login with Google.");
     } finally {
       setLoading(false);
     }
@@ -52,9 +65,25 @@ function Login() {
           {loading ? "Loading..." : "Login"}
         </button>
       </form>
+
       <p className="mt-4">
         Don't have an account? <a href="/register" className="text-blue-500">Register</a>
       </p>
+
+      <div className="flex items-center justify-center w-full mt-6">
+        <button
+          className="flex items-center justify-center bg-white border border-gray-300 shadow-md hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded-lg w-full"
+          onClick={signInWithGoogle}
+          disabled={loading}
+        >
+          <img
+            src="google.png"
+            alt="Google Logo"
+            className="h-6 w-9 mr-2"
+          />
+          {loading ? "Signing in..." : "Sign in with Google"}
+        </button>
+      </div>
     </div>
   );
 }
