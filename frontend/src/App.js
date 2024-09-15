@@ -4,15 +4,16 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { ToastContainer } from "react-toastify";
 import Up from "./components/Up";
+import Landing from "./components/Landing";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS file
 
 function App() {
   return (
     <Router>
-      <div className="h-screen bg-gradient-to-r from-green-200 via-blue-200 to-purple-200 flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-12">Crop Disease Predictor</h1>
+
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/landing" />} />
+          <Route path="/landing" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/upload" element={<Up/>}/>
@@ -29,7 +30,6 @@ function App() {
           pauseOnHover
           theme="dark"
         />
-      </div>
     </Router>
   );
 }

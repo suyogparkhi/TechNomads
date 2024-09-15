@@ -38,51 +38,53 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-lg max-w-md mx-auto">
-      <h2 className="text-3xl font-bold mb-6">Login</h2>
-      <form onSubmit={handleLogin} className="w-full">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="mb-4 p-3 border border-gray-300 rounded-lg w-full"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="mb-4 p-3 border border-gray-300 rounded-lg w-full"
-          required
-        />
-        <button
-          type="submit"
-          className={`p-3 bg-blue-500 text-white rounded-lg w-full ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
-          disabled={loading}
-        >
-          {loading ? "Loading..." : "Login"}
-        </button>
-      </form>
-
-      <p className="mt-4">
-        Don't have an account? <a href="/register" className="text-blue-500">Register</a>
-      </p>
-
-      <div className="flex items-center justify-center w-full mt-6">
-        <button
-          className="flex items-center justify-center bg-white border border-gray-300 shadow-md hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded-lg w-full"
-          onClick={signInWithGoogle}
-          disabled={loading}
-        >
-          <img
-            src="google.png"
-            alt="Google Logo"
-            className="h-6 w-9 mr-2"
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-8">
+        <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">Login</h2>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
-          {loading ? "Signing in..." : "Sign in with Google"}
-        </button>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+          <button
+            type="submit"
+            className={`w-full py-3 text-white bg-blue-500 rounded-lg font-semibold transition hover:bg-blue-600 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Login"}
+          </button>
+        </form>
+
+        <p className="mt-4 text-center">
+          Don't have an account? <a href="/register" className="text-blue-500 hover:underline">Register</a>
+        </p>
+
+        <div className="flex items-center justify-center mt-6">
+          <button
+            className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-lg hover:shadow-md transition"
+            onClick={signInWithGoogle}
+            disabled={loading}
+          >
+            <img
+              src="google.png"
+              alt="Google Logo"
+              className="h-6 w-6 mr-2"
+            />
+            {loading ? "Signing in..." : "Sign in with Google"}
+          </button>
+        </div>
       </div>
     </div>
   );
