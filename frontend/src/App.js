@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { ToastContainer } from "react-toastify";
+import Up from "./components/Up";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS file
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/upload" element={<Up/>}/>
         </Routes>
         <ToastContainer
           position="top-right"
