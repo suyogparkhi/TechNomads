@@ -76,19 +76,12 @@ export const ImageUpload = () => {
 
   return (
     <React.Fragment>
-      <header className="bg-gray-800 p-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <h1 className="text-white text-xl font-bold">
-            Upload your image
-          </h1>
-        </div>
-      </header>
       <main className="container mx-auto px-4 py-6">
         <div className="flex justify-center">
           <div className={`w-full max-w-lg p-4 border-2 ${!image ? 'border-dashed border-gray-300' : ''} rounded-lg shadow-lg`}>
             {image && (
-              <div className="h-64 bg-cover bg-center rounded-lg overflow-hidden">
-                <img src={preview} alt="Uploaded" className="w-full h-full object-cover" />
+              <div className="max-w-full max-h-full overflow-hidden rounded-lg flex justify-center items-center">
+                <img src={preview} alt="Uploaded" className="object-contain max-w-full max-h-96" />
               </div>
             )}
             {!image && (
@@ -104,7 +97,7 @@ export const ImageUpload = () => {
                   htmlFor="fileInput"
                   className="cursor-pointer flex flex-col items-center justify-center h-full w-full text-gray-600 bg-gray-100 border-dashed border-2 border-gray-300 rounded-lg hover:bg-gray-200"
                 >
-                  <span className="text-lg">Drag and drop an image of a potato plant leaf to process</span>
+                  <span className="text-lg">Drag and drop image</span>
                 </label>
               </div>
             )}
