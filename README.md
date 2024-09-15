@@ -30,8 +30,8 @@ This project is a web-based application that classifies plant leaf images into v
 ### Step 1: Clone the repository
 
 ```bash
-git clone <your-repository-url>
-cd <repository-folder>
+git clone https://github.com/suyogparkhi/TechNomads.git
+cd https://github.com/suyogparkhi/TechNomads.git
 ```
 
 ### Step 2: Install Python Dependencies
